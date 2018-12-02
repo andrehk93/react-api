@@ -11,8 +11,8 @@ class GridLayout extends React.Component {
     }
 
     static ClassNames = {
-        root: "blag-grid",
-        composition: comp => "blag-grid--composition-" + comp,
+        root: "react-api-grid",
+        composition: comp => "react-api-grid--composition-" + comp,
     };
 
     render() {

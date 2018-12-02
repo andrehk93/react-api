@@ -9,7 +9,7 @@ export default class Site extends React.Component {
     }
 
     static ClassNames = {
-        root: "blag-site"
+        root: "react-api-site"
     };
 
     render() {

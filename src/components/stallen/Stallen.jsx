@@ -1,5 +1,6 @@
 import * as React from "react";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import {react-apiButton} from "../button/Button";
 
 export default class Stallen extends React.Component {
     constructor(props) {
@@ -7,15 +8,19 @@ export default class Stallen extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            result: []
         };
     }
 
     componentDidMount() {
-        fetch("http://www.reddit.com/r/reactjs.json")
+        fetch("http://localhost:5000/hello", {
+            mode: "cors",
+        })
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log("Result: ", result);
                     this.setState({
                         isLoaded: true,
                         items: result
@@ -34,6 +39,31 @@ export default class Stallen extends React.Component {
 
     }
 
+    getResults() {
+        fetch("http://localhost:5000/result", {
+            mode: "cors",
+        })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log("Result: ", result);
+                    this.setState({
+                        isLoaded: true,
+                        result: result
+                    });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+    }
+
     render() {
         const { error, isLoaded, items } = this.state;
         console.log("Items: ", items);
@@ -44,13 +74,10 @@ export default class Stallen extends React.Component {
         } else {
             return (
                 <div>
-                    <h1>React AJAX call</h1>
-                    <h2><i>Reddit authors:</i></h2>
-                    <ul>
-                        {items.data.children.map((child, i) => {
-                            return <li key={i}>{child.data.author}</li>
-                        })}
-                    </ul>
+                    {this.state.items}
+                    <button onClick={this.getResults}>
+                        Get results
+                    </button>
                 </div>
             );
         }

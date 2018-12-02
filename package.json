@@ -7,6 +7,7 @@
     "start:dev": "webpack-dev-server --mode development --configwebpack.config.js --open --hot --history-api-fallback",
     "lint": "./node_modules/.bin/eslint src/ --ext jsx --ext js"
   },
+  "proxy": "http://localhost:5000",
   "keywords": [
     "react",
     "typescript"
@@ -40,6 +41,7 @@
     "npm": "^6.4.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "prop-types": "^15.5.7",
+    "recharts": "^1.4.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "typescript": "^3.1.3",

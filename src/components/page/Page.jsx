@@ -9,7 +9,7 @@ export default class Page extends React.Component {
     }
 
     static ClassNames = {
-        root: "blag-page"
+        root: "react-api-page"
     };
 
     render() {
