@@ -33,7 +33,7 @@ class SimpleLineChart extends React.Component {
     parseData(data) {
         return data.map((d, i) => {
             return {
-                name: i*10,
+                name: i*20,
                 data: d
             };
         });
@@ -43,7 +43,7 @@ class SimpleLineChart extends React.Component {
         const {data, domain} = this.props;
         return (
             // 99% per https://github.com/recharts/recharts/issues/172
-            <ResponsiveContainer width="99%" height={320} minWidth={800}>
+            <ResponsiveContainer width="99%" height={320}>
                 <LineChart data={data && this.parseData(data)}>
                     <XAxis dataKey="name" name={"Hello"} />
                     <YAxis domain={domain} />
